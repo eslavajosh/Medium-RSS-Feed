@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import articleService from "./articleService";
+
 import "./App.css";
+import "./images/icon-facebook.svg";
+
+import { parseDate } from "./util";
 
 function App() {
   const [articles, setArticles] = useState();
@@ -28,13 +32,15 @@ function App() {
     // console.log("target", target);
   };
 
-  const ConvertStringToHTML = (str) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(str, "text/html");
-    return doc.body;
-  };
+  // const convertStringToHTML = (str) => {
+  //   const parser = new DOMParser();
+  //   const { doc } = parser.parseFromString(str, "text/html");
+  //   console.log("doc", articles[0].content);
 
-  console.log(articles);
+  //   return doc;
+  // };
+
+  // console.log(articles);
 
   return (
     <React.Fragment>
@@ -51,7 +57,7 @@ function App() {
                   <h1 className="article-title">{item.title}</h1>
 
                   <p className="article-desc text-muted">
-                    published {item.pubDate}
+                    {parseDate(item.pubDate)}
                   </p>
                   <div className="text-muted">
                     #{item?.categories[0]} #{item?.categories[1]} #
@@ -81,7 +87,13 @@ function App() {
                     <a href={item.link} className="article-link">
                       Read More
                     </a>
+                    {/* {item.content} */}
                   </h4>
+                  <div className="icon-container">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                    <ion-icon name="logo-twitter"></ion-icon>
+                    <ion-icon name="mail-outline"></ion-icon>
+                  </div>
                 </div>
               </article>
             </div>

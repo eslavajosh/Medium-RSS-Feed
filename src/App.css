@@ -105,3 +105,9 @@ body {
 .article-link {
   text-decoration: none;
 }
+
+ion-icon {
+  color: #484466;
+  padding: 5px;
+  align-content: flex-end;
+}
